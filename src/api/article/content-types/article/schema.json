@@ -15,10 +15,6 @@
       "type": "string",
       "required": true
     },
-    "content": {
-      "type": "text",
-      "required": true
-    },
     "image": {
       "type": "media",
       "multiple": false,
@@ -34,6 +30,10 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::category.category"
+    },
+    "newscontent": {
+      "type": "blocks",
+      "required": true
     }
   }
 }
