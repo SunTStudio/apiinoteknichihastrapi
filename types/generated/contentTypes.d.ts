@@ -545,6 +545,37 @@ export interface ApiTypeType extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiUserFormUserForm extends Struct.CollectionTypeSchema {
+  collectionName: 'user_forms';
+  info: {
+    displayName: 'UserForm';
+    pluralName: 'user-forms';
+    singularName: 'user-form';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::user-form.user-form'
+    > &
+      Schema.Attribute.Private;
+    message: Schema.Attribute.Text;
+    name: Schema.Attribute.String;
+    phone: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiVariantVariant extends Struct.CollectionTypeSchema {
   collectionName: 'variants';
   info: {
@@ -1091,6 +1122,7 @@ declare module '@strapi/strapi' {
       'api::category.category': ApiCategoryCategory;
       'api::product.product': ApiProductProduct;
       'api::type.type': ApiTypeType;
+      'api::user-form.user-form': ApiUserFormUserForm;
       'api::variant.variant': ApiVariantVariant;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
