@@ -14,14 +14,14 @@
     "name": {
       "type": "string"
     },
-    "email": {
-      "type": "string"
-    },
     "phone": {
       "type": "string"
     },
     "message": {
       "type": "text"
+    },
+    "useremail": {
+      "type": "email"
     }
   }
 }
