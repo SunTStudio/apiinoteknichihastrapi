@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "distributors",
+  "info": {
+    "singularName": "distributor",
+    "pluralName": "distributors",
+    "displayName": "Distributor"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "namadistributor": {
+      "type": "string"
+    },
+    "alamat": {
+      "type": "text"
+    },
+    "phone": {
+      "type": "biginteger"
+    },
+    "email": {
+      "type": "email"
+    },
+    "website": {
+      "type": "string"
+    },
+    "city": {
+      "type": "enumeration",
+      "enum": [
+        "Jakarta",
+        "Yogyakarta",
+        "Semarang",
+        "Surabaya",
+        "Denpasar"
+      ]
+    }
+  }
+}
