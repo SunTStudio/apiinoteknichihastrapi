@@ -59,6 +59,25 @@
         "Stone",
         "Tile/Brick"
       ]
+    },
+    "Size": {
+      "type": "string"
+    },
+    "Weight": {
+      "type": "string"
+    },
+    "Packaging": {
+      "type": "string"
+    },
+    "Specifiation": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   }
 }

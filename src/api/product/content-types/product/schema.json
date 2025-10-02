@@ -15,28 +15,6 @@
       "type": "string",
       "required": true
     },
-    "Size": {
-      "type": "string",
-      "required": true
-    },
-    "Weight": {
-      "type": "string",
-      "required": true
-    },
-    "Packaging": {
-      "type": "string",
-      "required": true
-    },
-    "Specifiation": {
-      "type": "media",
-      "multiple": true,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
     "types": {
       "type": "relation",
       "relation": "oneToMany",

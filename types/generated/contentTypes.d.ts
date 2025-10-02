@@ -470,6 +470,41 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiDistributorDistributor extends Struct.CollectionTypeSchema {
+  collectionName: 'distributors';
+  info: {
+    displayName: 'Distributor';
+    pluralName: 'distributors';
+    singularName: 'distributor';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    alamat: Schema.Attribute.Text;
+    city: Schema.Attribute.Enumeration<
+      ['Jakarta', 'Yogyakarta', 'Semarang', 'Surabaya', 'Denpasar']
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::distributor.distributor'
+    > &
+      Schema.Attribute.Private;
+    namadistributor: Schema.Attribute.String;
+    phone: Schema.Attribute.BigInteger;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    website: Schema.Attribute.String;
+  };
+}
+
 export interface ApiNewsletterNewsletter extends Struct.CollectionTypeSchema {
   collectionName: 'newsletters';
   info: {
@@ -519,18 +554,11 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     Name: Schema.Attribute.String & Schema.Attribute.Required;
-    Packaging: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    Size: Schema.Attribute.String & Schema.Attribute.Required;
-    Specifiation: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
     types: Schema.Attribute.Relation<'oneToMany', 'api::type.type'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Weight: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -564,12 +592,19 @@ export interface ApiTypeType extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::type.type'> &
       Schema.Attribute.Private;
     Name: Schema.Attribute.String & Schema.Attribute.Required;
+    Packaging: Schema.Attribute.String;
     product: Schema.Attribute.Relation<'manyToOne', 'api::product.product'>;
     publishedAt: Schema.Attribute.DateTime;
+    Size: Schema.Attribute.String;
+    Specifiation: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     variants: Schema.Attribute.Relation<'oneToMany', 'api::variant.variant'>;
+    Weight: Schema.Attribute.String;
   };
 }
 
@@ -1148,6 +1183,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::article.article': ApiArticleArticle;
       'api::category.category': ApiCategoryCategory;
+      'api::distributor.distributor': ApiDistributorDistributor;
       'api::newsletter.newsletter': ApiNewsletterNewsletter;
       'api::product.product': ApiProductProduct;
       'api::type.type': ApiTypeType;
