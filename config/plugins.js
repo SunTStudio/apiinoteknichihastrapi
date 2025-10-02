@@ -7,21 +7,21 @@ module.exports = ({ env }) => {
     email: {
       config: isProduction
         ? {
-            // ✅ Gunakan email bawaan Strapi Cloud
+            // ✅ Email bawaan Strapi Cloud (pakai Postmark di belakang layar)
             provider: 'strapi-provider-email-strapi-cloud',
-            providerOptions: {}, // Biarkan kosong, Cloud inject otomatis
+            providerOptions: {}, // biarkan kosong, Cloud inject otomatis
             settings: {
-              defaultFrom: env('DEFAULT_EMAIL_FROM', 'no-reply@strapi.io'),
+              defaultFrom: 'no-reply@strapi.io', // HARUS pakai ini di Cloud
               defaultReplyTo: env('DEFAULT_EMAIL_REPLY_TO', 'no-reply@strapi.io'),
             },
           }
         : {
-            // ✅ Untuk lokal gunakan nodemailer
+            // ✅ Lokal (development) pakai Nodemailer
             provider: 'nodemailer',
             providerOptions: {
               host: env('SMTP_HOST', 'smtp.gmail.com'),
               port: env.int('SMTP_PORT', 587),
-              secure: false, // gunakan true jika pakai port 465
+              secure: false, // pakai true kalau pakai port 465
               auth: {
                 user: env('SMTP_USERNAME'),
                 pass: env('SMTP_PASSWORD'),
