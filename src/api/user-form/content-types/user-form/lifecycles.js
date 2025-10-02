@@ -1,11 +1,12 @@
 module.exports = {
     async afterCreate(event){
         const {result} = event;
-        console.log('Result User Form:', result);
+        console.log("📨 Lifecycle afterCreate newsletter dipanggil", result.useremail);
+
         try {
             await strapi.plugin('email').service('email').send({
                 to: process.env.ADMIN_NOTIFICATION_EMAIL,
-                from: process.env.SMTP_USERNAME || "no-reply@strapi.io",
+  from: "no-reply@strapi.io", // khusus Strapi Cloud
                 subject: '📩 Pesan Pertanyaan Baru dari User',
                     html: `
                     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
