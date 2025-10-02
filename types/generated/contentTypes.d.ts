@@ -513,7 +513,7 @@ export interface ApiNewsletterNewsletter extends Struct.CollectionTypeSchema {
     singularName: 'newsletter';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
@@ -616,7 +616,7 @@ export interface ApiUserFormUserForm extends Struct.CollectionTypeSchema {
     singularName: 'user-form';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
