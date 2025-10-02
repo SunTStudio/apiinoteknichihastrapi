@@ -4,6 +4,7 @@ module.exports = {
         try {
             await strapi.plugin('email').service('email').send({
                 to: process.env.ADMIN_NOTIFICATION_EMAIL,
+                from: process.env.DEFAULT_EMAIL_FROM || "no-reply@strapi.io",
                 subject: '📩 Pesan Pertanyaan Baru dari User',
                     html: `
                     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
