@@ -573,6 +573,10 @@ export interface ApiTypeType extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    Colour: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
     CoverImage: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     > &
@@ -603,7 +607,6 @@ export interface ApiTypeType extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    variants: Schema.Attribute.Relation<'oneToMany', 'api::variant.variant'>;
     Weight: Schema.Attribute.String;
   };
 }
@@ -636,38 +639,6 @@ export interface ApiUserFormUserForm extends Struct.CollectionTypeSchema {
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     useremail: Schema.Attribute.Email;
-  };
-}
-
-export interface ApiVariantVariant extends Struct.CollectionTypeSchema {
-  collectionName: 'variants';
-  info: {
-    displayName: 'Variant';
-    pluralName: 'variants';
-    singularName: 'variant';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::variant.variant'
-    > &
-      Schema.Attribute.Private;
-    Name: Schema.Attribute.String;
-    publishedAt: Schema.Attribute.DateTime;
-    typevariant: Schema.Attribute.Relation<'manyToOne', 'api::type.type'>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    VarianImage: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
   };
 }
 
@@ -1188,7 +1159,6 @@ declare module '@strapi/strapi' {
       'api::product.product': ApiProductProduct;
       'api::type.type': ApiTypeType;
       'api::user-form.user-form': ApiUserFormUserForm;
-      'api::variant.variant': ApiVariantVariant;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

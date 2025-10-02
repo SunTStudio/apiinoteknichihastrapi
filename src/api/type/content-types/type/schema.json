@@ -43,12 +43,6 @@
       "target": "api::product.product",
       "inversedBy": "types"
     },
-    "variants": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::variant.variant",
-      "mappedBy": "typevariant"
-    },
     "Kind": {
       "type": "enumeration",
       "required": true,
@@ -70,6 +64,16 @@
       "type": "string"
     },
     "Specifiation": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Colour": {
       "type": "media",
       "multiple": true,
       "allowedTypes": [
