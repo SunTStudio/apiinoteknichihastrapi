@@ -1,6 +1,7 @@
 module.exports = {
     async afterCreate(event) {
         const { result } = event;
+        console.log('Result User Form:', result);
         try {
             await strapi.plugin('email').service('email').send({
                to: process.env.ADMIN_NOTIFICATION_EMAIL,
