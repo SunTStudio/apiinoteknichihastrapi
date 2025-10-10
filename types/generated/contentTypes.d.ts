@@ -505,6 +505,42 @@ export interface ApiDistributorDistributor extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiDownloadCatalogDownloadCatalog
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'download_catalogs';
+  info: {
+    displayName: 'DownloadCatalog';
+    pluralName: 'download-catalogs';
+    singularName: 'download-catalog';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    CatalogFile: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    CoverImage: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::download-catalog.download-catalog'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    Slug: Schema.Attribute.String;
+    Title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiNewsletterNewsletter extends Struct.CollectionTypeSchema {
   collectionName: 'newsletters';
   info: {
@@ -1155,6 +1191,7 @@ declare module '@strapi/strapi' {
       'api::article.article': ApiArticleArticle;
       'api::category.category': ApiCategoryCategory;
       'api::distributor.distributor': ApiDistributorDistributor;
+      'api::download-catalog.download-catalog': ApiDownloadCatalogDownloadCatalog;
       'api::newsletter.newsletter': ApiNewsletterNewsletter;
       'api::product.product': ApiProductProduct;
       'api::type.type': ApiTypeType;
