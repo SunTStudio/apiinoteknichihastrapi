@@ -29,7 +29,7 @@
     "city": {
       "type": "enumeration",
       "enum": [
-        "Jakarta",
+        "Jabodetabek",
         "Yogyakarta",
         "Semarang",
         "Surabaya",
