@@ -482,12 +482,10 @@ export interface ApiDistributorDistributor extends Struct.CollectionTypeSchema {
   };
   attributes: {
     alamat: Schema.Attribute.Text;
-    city: Schema.Attribute.Enumeration<
-      ['Jakarta', 'Yogyakarta', 'Semarang', 'Surabaya', 'Denpasar']
-    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    distributionarea: Schema.Attribute.String;
     email: Schema.Attribute.Email;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<

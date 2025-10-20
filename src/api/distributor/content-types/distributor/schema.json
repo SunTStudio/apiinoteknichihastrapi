@@ -26,15 +26,8 @@
     "website": {
       "type": "string"
     },
-    "city": {
-      "type": "enumeration",
-      "enum": [
-        "Jabodetabek",
-        "Yogyakarta",
-        "Semarang",
-        "Surabaya",
-        "Denpasar"
-      ]
+    "distributionarea": {
+      "type": "string"
     }
   }
 }
