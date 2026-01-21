@@ -28,6 +28,9 @@
     },
     "distributionarea": {
       "type": "string"
+    },
+    "whatsapp_link": {
+      "type": "string"
     }
   }
 }
