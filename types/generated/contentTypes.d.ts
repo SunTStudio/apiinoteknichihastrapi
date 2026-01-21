@@ -457,7 +457,7 @@ export interface ApiDistributorDistributor extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     namadistributor: Schema.Attribute.String;
-    phone: Schema.Attribute.BigInteger;
+    phone: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
