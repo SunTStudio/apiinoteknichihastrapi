@@ -22,6 +22,12 @@
     },
     "useremail": {
       "type": "email"
+    },
+    "domicileProvince": {
+      "type": "string"
+    },
+    "domicileRegency": {
+      "type": "string"
     }
   }
 }
