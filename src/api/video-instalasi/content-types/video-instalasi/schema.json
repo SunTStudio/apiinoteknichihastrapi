@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "video_instalasis",
+  "info": {
+    "singularName": "video-instalasi",
+    "pluralName": "video-instalasis",
+    "displayName": "VideoInstalasi"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "judul_instalasi": {
+      "type": "string"
+    },
+    "video": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

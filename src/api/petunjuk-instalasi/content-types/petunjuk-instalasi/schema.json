@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "petunjuk_instalasis",
+  "info": {
+    "singularName": "petunjuk-instalasi",
+    "pluralName": "petunjuk-instalasis",
+    "displayName": "PetunjukInstalasi"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "judul_instalasi": {
+      "type": "string"
+    },
+    "document": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

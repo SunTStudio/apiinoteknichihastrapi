@@ -7,7 +7,14 @@ module.exports = {
    *
    * This gives you an opportunity to extend code.
    */
-  register(/*{ strapi }*/) {},
+  register({ strapi }) {
+    // Override skema kolom caption pada tabel files (plugin upload) menjadi tipe 'text'
+    const fileAttributes = strapi.plugin('upload').contentTypes.file.attributes;
+    
+    if (fileAttributes && fileAttributes.caption) {
+      fileAttributes.caption.type = 'text';
+    }
+  },
 
   /**
    * An asynchronous bootstrap function that runs before

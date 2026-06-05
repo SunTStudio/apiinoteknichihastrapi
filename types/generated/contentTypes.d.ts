@@ -504,6 +504,40 @@ export interface ApiDownloadCatalogDownloadCatalog
   };
 }
 
+export interface ApiGaleriGaleri extends Struct.CollectionTypeSchema {
+  collectionName: 'galeris';
+  info: {
+    displayName: 'Galeri';
+    pluralName: 'galeris';
+    singularName: 'galeri';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::galeri.galeri'
+    > &
+      Schema.Attribute.Private;
+    nama_project: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    thumbnail: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiNewsletterNewsletter extends Struct.CollectionTypeSchema {
   collectionName: 'newsletters';
   info: {
@@ -529,6 +563,39 @@ export interface ApiNewsletterNewsletter extends Struct.CollectionTypeSchema {
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     useremail: Schema.Attribute.Email;
+  };
+}
+
+export interface ApiPetunjukInstalasiPetunjukInstalasi
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'petunjuk_instalasis';
+  info: {
+    displayName: 'PetunjukInstalasi';
+    pluralName: 'petunjuk-instalasis';
+    singularName: 'petunjuk-instalasi';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    document: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    judul_instalasi: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::petunjuk-instalasi.petunjuk-instalasi'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -640,6 +707,39 @@ export interface ApiUserFormUserForm extends Struct.CollectionTypeSchema {
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     useremail: Schema.Attribute.Email;
+  };
+}
+
+export interface ApiVideoInstalasiVideoInstalasi
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'video_instalasis';
+  info: {
+    displayName: 'VideoInstalasi';
+    pluralName: 'video-instalasis';
+    singularName: 'video-instalasi';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    judul_instalasi: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::video-instalasi.video-instalasi'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    video: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
   };
 }
 
@@ -901,7 +1001,7 @@ export interface PluginUploadFile extends Struct.CollectionTypeSchema {
   };
   attributes: {
     alternativeText: Schema.Attribute.String;
-    caption: Schema.Attribute.String;
+    caption: Schema.Attribute.Text;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1156,10 +1256,13 @@ declare module '@strapi/strapi' {
       'api::category.category': ApiCategoryCategory;
       'api::distributor.distributor': ApiDistributorDistributor;
       'api::download-catalog.download-catalog': ApiDownloadCatalogDownloadCatalog;
+      'api::galeri.galeri': ApiGaleriGaleri;
       'api::newsletter.newsletter': ApiNewsletterNewsletter;
+      'api::petunjuk-instalasi.petunjuk-instalasi': ApiPetunjukInstalasiPetunjukInstalasi;
       'api::product.product': ApiProductProduct;
       'api::type.type': ApiTypeType;
       'api::user-form.user-form': ApiUserFormUserForm;
+      'api::video-instalasi.video-instalasi': ApiVideoInstalasiVideoInstalasi;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
