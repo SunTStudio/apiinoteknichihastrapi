@@ -82,6 +82,13 @@
         "videos",
         "audios"
       ]
+    },
+    "kategori": {
+      "type": "enumeration",
+      "enum": [
+        "nichiha",
+        "luum"
+      ]
     }
   }
 }

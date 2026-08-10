@@ -19,7 +19,7 @@
     },
     "image": {
       "type": "media",
-      "multiple": true,
+      "multiple": false,
       "allowedTypes": [
         "images",
         "files",
@@ -35,6 +35,13 @@
         "files",
         "videos",
         "audios"
+      ]
+    },
+    "kategori": {
+      "type": "enumeration",
+      "enum": [
+        "nichiha",
+        "luum"
       ]
     }
   }

@@ -489,6 +489,7 @@ export interface ApiDownloadCatalogDownloadCatalog
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    kategori: Schema.Attribute.Enumeration<['nichiha', 'luum']>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -519,10 +520,8 @@ export interface ApiGaleriGaleri extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
-    image: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    kategori: Schema.Attribute.Enumeration<['nichiha', 'luum']>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -586,6 +585,7 @@ export interface ApiPetunjukInstalasiPetunjukInstalasi
       true
     >;
     judul_instalasi: Schema.Attribute.String;
+    kategori: Schema.Attribute.Enumeration<['nichiha', 'luum']>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -613,6 +613,7 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    kategori: Schema.Attribute.Enumeration<['nichiha', 'luum']>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -654,6 +655,7 @@ export interface ApiTypeType extends Struct.CollectionTypeSchema {
       'images' | 'files' | 'videos' | 'audios'
     > &
       Schema.Attribute.Required;
+    kategori: Schema.Attribute.Enumeration<['nichiha', 'luum']>;
     Kind: Schema.Attribute.Enumeration<
       ['Simple', 'Designer', 'Wood', 'Stone', 'Tile/Brick']
     > &
@@ -726,6 +728,7 @@ export interface ApiVideoInstalasiVideoInstalasi
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     judul_instalasi: Schema.Attribute.String;
+    kategori: Schema.Attribute.Enumeration<['nichiha', 'luum']>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
